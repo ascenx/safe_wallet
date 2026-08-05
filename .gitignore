@@ -1,0 +1,89 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.env
+.env.*
+!.env.example
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.packages
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# Android related
+android/.gradle/
+android/local.properties
+android/key.properties
+android/**/GeneratedPluginRegistrant.java
+android/**/*.keystore
+android/**/*.jks
+android/**/.cxx/
+
+# iOS related
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/ephemeral/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Runner.xcworkspace/xcuserdata/
+ios/Runner.xcodeproj/xcuserdata/
+
+# FVM
+.fvm/
+!.fvm/fvm_config.json
+
+# Generated reports
+test-results/
+reports/
+
+# Local Codex workspace configuration
+.codex/
+
+# Local wallet/security artifacts
+*.mnemonic
+*.seed
+*.privatekey
+*.keystore.local
+*.wallet.local
+
+
+/docs

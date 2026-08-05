@@ -1,0 +1,8 @@
+{
+  "chainId": "sui",
+  "source": {
+    "name": "On-chain discovery",
+    "note": "Sui Coin types are discovered from account balances and metadata."
+  },
+  "tokens": []
+}

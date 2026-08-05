@@ -1,0 +1,3 @@
+"NSCameraUsageDescription" = "用于扫码识别收款地址、WalletConnect URI 和 dApp 链接。";
+"NSPhotoLibraryAddUsageDescription" = "用于将钱包收款二维码保存到系统相册。";
+"NSPhotoLibraryUsageDescription" = "用于访问系统相册并保存钱包收款二维码。";

@@ -1,0 +1,819 @@
+{
+  "chainId": "solana",
+  "source": {
+    "name": "CoinGecko",
+    "markets": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc",
+    "platforms": "https://api.coingecko.com/api/v3/coins/list?include_platform=true",
+    "tokenList": "https://tokens.coingecko.com/solana/all.json"
+  },
+  "tokens": [
+    {
+      "chainId": "solana",
+      "contractAddress": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+      "symbol": "USDT",
+      "name": "Tether",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/325/large/Tether.png?1696501661"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "symbol": "USDC",
+      "name": "USDC",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/6319/large/USDC.png?1769615602"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+      "symbol": "USDS",
+      "name": "USDS",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/39926/large/usds.webp?1726666683"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "LinkhB3afbBKb2EQQu7s7umdZceV3wcvAUJhQAfQ23L",
+      "symbol": "LINK",
+      "name": "Chainlink",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/877/large/Chainlink_Logo_500.png?1760023405"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB",
+      "symbol": "USD1",
+      "name": "USD1",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/54977/large/USD1_1000x1000_transparent.png?1749297002"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "DEkqHyPN7GMRJ5cArtQFAWefqbZb33Hyf6s5iCwjEonT",
+      "symbol": "USDE",
+      "name": "Ethena USDe",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/33613/large/usde.png?1733810059"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "7LWanZteUKtvFjv4MHYgKXXdAuCQYFPJysL9pxxdRQGn",
+      "symbol": "USYC",
+      "name": "Circle USYC",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/51054/large/Hashnote_SDYC_200x200.png?1730370965"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo",
+      "symbol": "PYUSD",
+      "name": "PayPal USD",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/31212/large/PYUSD_Token_Logo_2x.png?1765987788"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "2u1tszSeqZ3qBWF3uNGPFc8TzMk2tdiwknnRMWGWjGWH",
+      "symbol": "USDG",
+      "name": "Global Dollar",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/51281/large/GDN_USDG_Token_200x200.png?1730484111"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "GyWgeqpy5GueU2YbkE8xqUeVEokCMMCEeUrfbtMw6phr",
+      "symbol": "BUIDL",
+      "name": "BlackRock USD Institutional Digital Liquidity Fund",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/36291/large/blackrock.png?1711013223"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "A1KLoBrKBde8Ty9qtNQUtq3C2ortoC3u7twggz7sEto6",
+      "symbol": "USDY",
+      "name": "Ondo US Dollar Yield",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/31700/large/usdy_%281%29.png?1696530524"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "WLFinEv6ypjkczcS83FZqFpgFZYwQXutRbxGe7oC16g",
+      "symbol": "WLFI",
+      "name": "World Liberty Financial",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/50767/large/wlfi.png?1756438915"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "8yXrtJ54jZtE84xEBzTESKuegjcAkAuDrdAhRd8i8n3T",
+      "symbol": "USDTB",
+      "name": "USDtb",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/52804/large/76357aa8-4ef7-446c-bad3-a3f944eeec7a.jpeg?1758277468"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "AavE1kKKnesPw4MuRJmJ9jZs9QzEE8CPxQ3ViczUDfc1",
+      "symbol": "AAVE",
+      "name": "Aave",
+      "decimals": 8,
+      "logoUri": "https://assets.coingecko.com/coins/images/12645/large/aave-token-round.png?1720472354"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "CCz3SGVziFeLYk2xfEstkiqJfYkjaSWb2GCABYsVcjo2",
+      "symbol": "USTB",
+      "name": "Invesco Short Duration US Government Securities Fund",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/35012/large/Invesco_icon_lg.png?1780816895"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
+      "symbol": "RENDER",
+      "name": "Render",
+      "decimals": 8,
+      "logoUri": "https://assets.coingecko.com/coins/images/11636/large/rndr.png?1696511529"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "72QvBVwpxqmheEPfaCwWSWqEFsUy3rhWt6JhQBMNTwD1",
+      "symbol": "ENA",
+      "name": "Ethena",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/36530/large/ethena.png?1711701436"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "CP4w2B3og2TaFUpye1kr8pdeJwwahtESKppZnffN9n9d",
+      "symbol": "BDX",
+      "name": "Beldex",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/5111/large/Beldex.png?1696505631"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+      "symbol": "PUMP",
+      "name": "Pump.fun",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/67164/large/pump.jpg?1751949376"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+      "symbol": "JUP",
+      "name": "Jupiter",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/34188/large/jup.png?1704266489"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "i7u4r16TcsJTgq1kAG8opmVZyVnAKBwLKu6ZPMwzxNc",
+      "symbol": "OUSG",
+      "name": "OUSG",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/29023/large/OUSG.png?1696527993"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "6FrrzDk5mQARGc1TDYoyVnSyRdds1t4PbtohCD6p3tgG",
+      "symbol": "USX",
+      "name": "USX",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/68429/large/Solstice_Icons_for_DEX_512x512_USX.png?1755718377"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "HzwqbKZw8HxMN6bF2yFZNrht3c2iXXzpKcFu7uBEDKtr",
+      "symbol": "EURC",
+      "name": "EURC",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/26045/large/EURC.png?1769615705"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+      "symbol": "PENGU",
+      "name": "Pudgy Penguins",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/52622/large/PUDGY_PENGUINS_PENGU_PFP.png?1733809110"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "4qQeZ5LwSz6HuupUu8jCtgXyW1mYQcNbFAW1sWZp89HL",
+      "symbol": "CAKE",
+      "name": "PancakeSwap",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/12632/large/pancakeswap-cake-logo_%281%29.png?1696512440"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+      "symbol": "TRUMP",
+      "name": "Official Trump",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/53746/large/trump.png?1737171561"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+      "symbol": "BONK",
+      "name": "Bonk",
+      "decimals": 5,
+      "logoUri": "https://assets.coingecko.com/coins/images/28600/large/bonk.jpg?1696527587"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "3iQL8BFS2vE7mww4ehAqQHAsbmRNCrPxizWAT2Zfyr9y",
+      "symbol": "VIRTUAL",
+      "name": "Virtuals Protocol",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/34057/large/LOGOMARK.png?1708356054"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "3b8X44fLF9ooXaUm3hhSgjpmVs6rZZ3pPoGnGahc3Uu7",
+      "symbol": "PRIME",
+      "name": "PRIME",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/71002/large/Frame_427319702.png?1765093510"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "HmMubgKx91Tpq3jmfcKQwsv5HrErqnCTTRJMB6afFR2u",
+      "symbol": "9BIT",
+      "name": "The9bit",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/71396/large/v1.png?1767864318"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "9zNQRsGLjNKwCUU5Gq5LR8beUCPzQMVMqKAi3SSZh54u",
+      "symbol": "FDUSD",
+      "name": "First Digital USD",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/31079/large/FDUSD_icon_black.png?1731097953"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
+      "symbol": "JTO",
+      "name": "Jito",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/33228/large/jto.png?1701137022"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "J3NKxxXZcnNiMjKw9hYb2K4LUxgwB6t1FtPtQVsv3KFr",
+      "symbol": "SPX",
+      "name": "SPX6900",
+      "decimals": 8,
+      "logoUri": "https://assets.coingecko.com/coins/images/31401/large/centeredcoin_%281%29.png?1737048493"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "6eftxVbSAunVEoxUWdGhPdxg5UdsJ8Wkwy5w5YFuxouw",
+      "symbol": "CHZ",
+      "name": "Chiliz",
+      "decimals": 8,
+      "logoUri": "https://assets.coingecko.com/coins/images/8834/large/CHZ_Token_updated.png?1696508986"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "J6pQQ3FAcJQeWPPGppWRb4nM8jU3wLyYbRrLh7feMfvd",
+      "symbol": "2Z",
+      "name": "DoubleZero",
+      "decimals": 8,
+      "logoUri": "https://assets.coingecko.com/coins/images/68339/large/Coingecko_-_PFP.png?1755694420"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "2Xva1NeLRuBFdK41gEuXqgeWtnKKDve9PKeCnMEpNG6K",
+      "symbol": "OHM",
+      "name": "Olympus",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/14483/large/token_OHM_%281%29.png?1696514169"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "ZBCNpuD7YMXzTHB2fhGkGi78MNsHGLRXUhRewNRm9RU",
+      "symbol": "ZBCN",
+      "name": "Zebec Network",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/37052/large/zbcn.jpeg?1713168241"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3",
+      "symbol": "PYTH",
+      "name": "Pyth Network",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/31924/large/pyth.png?1701245725"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "HsRpHQn6VbyMs5b5j5SV6xQ2VvpvvCCzu19GjytVSCoz",
+      "symbol": "STRK",
+      "name": "Starknet",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/26433/large/starknet.png?1696525507"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "Grass7B4RdKfBCjTKgSqnXkqjwiGvQyFbuSCUJr3XXjs",
+      "symbol": "GRASS",
+      "name": "Grass",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/40094/large/Grass.jpg?1725697048"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "5Y8NV33Vv7WbnLfq3zBcKSdYPrk7g2KoiQoe7M2tcxp5",
+      "symbol": "ONYC",
+      "name": "OnRe Tokenized Reinsurance",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/67072/large/3D_ONYC.png?1779524172"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "Bi11Je4MH3PpyCNiuTAepRbsA5U6DK3DJy79ZFthddX",
+      "symbol": "BILL",
+      "name": "Billions Network",
+      "decimals": 8,
+      "logoUri": "https://assets.coingecko.com/coins/images/68464/large/billions.png?1755828007"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+      "symbol": "WIF",
+      "name": "dogwifhat",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/33566/large/dogwifhat.jpg?1702499428"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+      "symbol": "RAY",
+      "name": "Raydium",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/13928/large/PSigc4ie_400x400.jpg?1696513668"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "3dQTr7ror2QPKQ3GbBCokJUmjErGg8kTJzdnYjNfvi3Z",
+      "symbol": "BORG",
+      "name": "SwissBorg",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/2117/large/YJUrRy7r_400x400.png?1696503083"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "Xs78JED6PFZxWc2wCEPspZW9kL3Se5J7L5TChKgsidH",
+      "symbol": "STRCX",
+      "name": "Strategy PP Variable xStock",
+      "decimals": 8,
+      "logoUri": "https://assets.coingecko.com/coins/images/71033/large/Ticker_STRCx__Company_Name_Strategy_PP_Variable__size_200x200.png?1765380234"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "EPeUFDgHRxs9xxEPVaL6kfGQvCon7jmAWKVUHuux1Tpz",
+      "symbol": "BAT",
+      "name": "Basic Attention",
+      "decimals": 8,
+      "logoUri": "https://assets.coingecko.com/coins/images/677/large/basic-attention-token.png?1696501867"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "DghpMkatCiUsofbTmid3M3kAbDTPqDwKiYHnudXeGG52",
+      "symbol": "EURCV",
+      "name": "EUR CoinVertible",
+      "decimals": 2,
+      "logoUri": "https://assets.coingecko.com/coins/images/33415/large/eurcv_%281%29.png?1701752017"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "AUSD1jCcCyPLybk1YnvPWsHQSrZ46dxwoMniN4N2UEB9",
+      "symbol": "AUSD",
+      "name": "AUSD",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/39284/large/AUSD_1024px.png?1764684132"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH",
+      "symbol": "CASH",
+      "name": "CASH",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/69679/large/cash.jpg?1759283906"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "C1MHyoTJpRTeS9AQCyspNVu2EWAYCZwmJ1jNkEArFP1f",
+      "symbol": "APE",
+      "name": "ApeCoin",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/24383/large/APECOIN.png?1756551529"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "GzX1ireZDU865FiMaKrdVB1H6AE8LAqWYCg6chrMrfBw",
+      "symbol": "FRXUSD",
+      "name": "Frax USD",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/53963/large/frxUSD.png?1737792154"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "eEUiUs4JWYZrp72djAGF1A8PhpR6rHphGeGN7GbVLp6",
+      "symbol": "GALA",
+      "name": "GALA",
+      "decimals": 8,
+      "logoUri": "https://assets.coingecko.com/coins/images/12493/large/GALA_token_image_-_200PNG.png?1709725869"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "J3umBWqhSjd13sag1E1aUojViWvPYA5dFNyqpKuX3WXj",
+      "symbol": "HOME",
+      "name": "HOME",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/54873/large/defi-app.png?1742235743"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "6xHEyem9hmkGtVq6XGCiQUGpPsHBaoYuYdFNZa5ondo",
+      "symbol": "CRCLON",
+      "name": "Circle Internet Group (Ondo Tokenized Stock)",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/68595/large/crclon_160x160.png?1756129889"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
+      "symbol": "FARTCOIN",
+      "name": "Fartcoin",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/50891/large/fart.jpg?1729503972"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "FubtUcvhSCr3VPXEcxouoQjKQ7NWTCzXyECe76B7L3f8",
+      "symbol": "ACRED",
+      "name": "Apollo Diversified Credit Securitize Fund",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/54809/large/ACRED.png?1741801356"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "3KzAE8dPyJRgZ36Eh81v7WPwi6dm7bDhdMb8EAus2RAf",
+      "symbol": "GOMINING",
+      "name": "GoMining Token",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/15662/large/GoMining_Logo.webp?1769225542"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "DUSDt4AeLZHWYmcXnVGYdgAzjtzU5mXUVnTMdnSzAttM",
+      "symbol": "DUSD",
+      "name": "StandX DUSD",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/55984/large/output-onlinepngtools.png?1747932126"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "Dm5BxyMetG3Aq5PaG1BrG7rBYqEMtnkjvPNMExfacVk7",
+      "symbol": "ATH",
+      "name": "Aethir",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/36179/large/logogram_circle_dark_green_vb_green_%281%29.png?1718232706"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "DuEy8wWrzCUun5ZbbG9hkVqXqqicpTQw8gB7nEAzpCHQ",
+      "symbol": "FLUID",
+      "name": "Fluid",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/14688/large/Logo_1_%28brighter%29.png?1734430693"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "BCNT4t3rv5Hva8RnUtJUJLnxzeFAabcYp8CghC1SmWin",
+      "symbol": "BC",
+      "name": "BCGame Coin",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/53197/large/Graphic_Only-200black.png?1746867614"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "hntyVP6YFm1Hg25TN9WGLqM12b8TQmcknKrdu1oxWux",
+      "symbol": "HNT",
+      "name": "Helium",
+      "decimals": 8,
+      "logoUri": "https://assets.coingecko.com/coins/images/4284/large/helium_logo_use.png?1748092589"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "26f12PmBk77wQV1TzLe8XKkNBvMFggbuypxdtMLzNLzz",
+      "symbol": "ZIG",
+      "name": "ZIGChain",
+      "decimals": 8,
+      "logoUri": "https://assets.coingecko.com/coins/images/14796/large/ZIG_COIN_%281%29.png?1779272472"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "61V8vBaqAGMpgDQi4JcAwo1dmBGHsyhzodcPqnEVpump",
+      "symbol": "ARC",
+      "name": "AI Rig Complex",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/52701/large/u312bPNA_400x400.jpg?1734044765"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "J1Wpmugrooj1yMyQKrdZ2vwRXG5rhfx3vTnYE39gpump",
+      "symbol": "WOULD",
+      "name": "would",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/52316/large/QmXJR6Q2zkqpotTY2nMP6k76LykKW7z4tgfQfH1ZUo57Dt.jpeg?1733076468"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "DBRiDgJAMsM95moTzJs7M9LnkGErpbv9v6CUR1DXnUu5",
+      "symbol": "DBR",
+      "name": "deBridge",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/38019/large/DBR_icon_Color.png?1724708885"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "Fz9edBpaURPPzpKVRR1A8PENYDEgHqwx5D5th28ondo",
+      "symbol": "MUON",
+      "name": "Micron Technology (Ondo Tokenized Stock)",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/68574/large/muon_160x160.png?1756106401"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2",
+      "symbol": "TROLL",
+      "name": "TROLL",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/55282/large/Untitled_design.png?1777015928"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P",
+      "symbol": "MELANIA",
+      "name": "Melania Meme",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/53775/large/melania-meme.png?1737329885"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "KMNo3nJsBXfcpJTVhZcXLW7RmTwTt4GVFE7suUBo9sS",
+      "symbol": "KMNO",
+      "name": "Kamino",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/35801/large/Kamino_200x200.png?1767944671"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "9PR7nCP9DpcUotnDPVLUBUZKu5WAYkwrCUx9wDnSpump",
+      "symbol": "BAN",
+      "name": "Comedian",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/51100/large/ban.jpg?1730085215"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk",
+      "symbol": "USELESS",
+      "name": "Useless Coin",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/55684/large/coingeckoupdate.png?1755203747"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "7JA5eZdCzztSfQbJvS8aVVxMFfd81Rs9VvwnocV1mKHu",
+      "symbol": "GEOD",
+      "name": "Geodnet",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/31608/large/Circular_White.png?1696530424"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "4Zp52aF4hZi9fzH19xpbWKYKQvgLyCN67KFbrQDqeTKh",
+      "symbol": "ZAMA",
+      "name": "Zama",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/70921/large/zama.png?1764591992"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "bioJ9JTqW62MLz7UKHU69gtKhPpGi1BQhccj2kmSvUJ",
+      "symbol": "BIO",
+      "name": "Bio Protocol",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/53022/large/bio.jpg?1735011002"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "METAwkXcqyXKy1AtsSgJ8JiUHwGCafnZL38n3vYmeta",
+      "symbol": "META",
+      "name": "MetaDAO",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/68320/large/META.png?1755335883"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "u9nmK5sQovm6ACVCQbbq8xUMpFqdPSYxdxVwXUX4sjY",
+      "symbol": "ORDI",
+      "name": "ORDI",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/30162/large/ordi.png?1696529082"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "CqW2pd6dCPG9xKZfAsTovzDsMmAGKJSDBNcwM96ondo",
+      "symbol": "IVVON",
+      "name": "iShares Core S&P 500 ETF (Ondo Tokenized ETF)",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/68650/large/ivvon_160x160.png?1756156270"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "34mJztT9am2jybSukvjNqRjgJBZqHJsHnivArx1P4xy1",
+      "symbol": "VBILL",
+      "name": "VanEck Treasury Fund",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/56023/large/vbill_200.png?1748092620"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "AAeENcfHbTExuTvs4q7r9Bjax98Dg6BGX3aMph4bTLdK",
+      "symbol": "RIF",
+      "name": "Rootstock Infrastructure Framework",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/7460/large/8befc44a46c247e8a3f7fc8abba586b1_%283%29.png?1705501867"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "5aLhp9VnUEKcsdtkfsf2DUgpJfomx7GmYVny24dHUZoB",
+      "symbol": "XAUM",
+      "name": "Matrixdock Gold",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/51962/large/xaum_200px_logo_1x.png?1733560735"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "BPxxfRCXkUVhig4HS1Lh7kZqV6SPJhzfEk4x6fVBjPCy",
+      "symbol": "BP",
+      "name": "Backpack",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/102171961/large/image_%285%29.png?1774269858"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "dog1viwbb2vWDpER5FrJ4YFG6gq6XuyFohUe9TXN65u",
+      "symbol": "DOG",
+      "name": "Dog (Bitcoin)",
+      "decimals": 5,
+      "logoUri": "https://assets.coingecko.com/coins/images/37352/large/DOGGOTOTHEMOON.png?1714096969"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "chipCAT7vi5CZtbZsn9z7iMPXvFwyAnKz3QFu8XVuHm",
+      "symbol": "CHIP",
+      "name": "USD.AI",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/102171777/large/CHIP_Token_Logo_Large.png?1776777444"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+      "symbol": "ORCA",
+      "name": "Orca",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/17547/large/Orca_Logo.png?1696517083"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "9ckR7pPPvyPadACDTzLwK2ZAEeUJ3qGSnzPs8bVaHrSy",
+      "symbol": "USDU",
+      "name": "USDu",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/67726/large/USDu_Icon_512x512.png?1770780851"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "7dUKUopcNWW6CcU4eRxCHh1uiMh32zDrmGf6ufqhxann",
+      "symbol": "BABYDOGE",
+      "name": "Baby Doge Coin",
+      "decimals": 1,
+      "logoUri": "https://assets.coingecko.com/coins/images/16125/large/babydoge.jpg?1696515731"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "SKRbvo6Gf7GondiT3BbTfuRDPqLWei4j2Qy2NPGZhW3",
+      "symbol": "SKR",
+      "name": "Seeker",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/70974/large/seeker-logo.jpg?1764922774"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "GAehkgN1ZDNvavX81FmzCcwRnzekKMkSyUNq8WkMsjX1",
+      "symbol": "SWOP",
+      "name": "Swop",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/66773/large/Group_1000007182_copy.png?1750487480"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "2Dyzu65QA9zdX1UeE7Gx71k7fiwyUK6sZdrvJ7auq5wm",
+      "symbol": "TURBO",
+      "name": "Turbo",
+      "decimals": 8,
+      "logoUri": "https://assets.coingecko.com/coins/images/30117/large/TurboMark-QL_200.png?1708079597"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "FeR8VBqNRSUD5NtXAj2n3j1dAHkZHfyDktKuLXD4pump",
+      "symbol": "JELLYJELLY",
+      "name": "Jelly-My-Jelly",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/54087/large/jellyjelly-logo.webp?1738218050"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+      "symbol": "TSLAX",
+      "name": "Tesla xStock",
+      "decimals": 8,
+      "logoUri": "https://assets.coingecko.com/coins/images/55638/large/Ticker_TSLA__Company_Name_Tesla_Inc.__size_200x200_2x.png?1746863299"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
+      "symbol": "W",
+      "name": "Wormhole",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/35087/large/W_Token_%283%29.png?1758122686"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "4eDf52YYzL6i6gbZ6FXqrLUPXbtP61f1gPSFM66M4XHe",
+      "symbol": "SOON",
+      "name": "SOON",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/55124/large/red_2.PNG?1743843131"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "gEGtLTPNQ7jcg25zTetkbmF7teoDLcrfTnQfmn2ondo",
+      "symbol": "NVDAON",
+      "name": "NVIDIA (Ondo Tokenized Stock)",
+      "decimals": 9,
+      "logoUri": "https://assets.coingecko.com/coins/images/68623/large/nvdaon_160x160.png?1756130268"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+      "symbol": "MET",
+      "name": "Meteora",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/69110/large/meteora.png?1757517561"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "A7n89LqW67HJKzJkdWZa2xojuK4N5GBKHz3dfjATCZPz",
+      "symbol": "DEGEN",
+      "name": "Degen",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/34515/large/android-chrome-512x512.png?1706198225"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "BRZbFNQDcWLfcdHmAkqEVnLHCAWKTRf6eHyEaWdZp3JN",
+      "symbol": "BRZ",
+      "name": "Brazilian Digital",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/8472/large/MicrosoftTeams-image_%286%29.png?1696508657"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "JuprjznTrTSp2UFa3ZBUFgwdAmtZCq4MQCwysN55USD",
+      "symbol": "JUPUSD",
+      "name": "JupUSD",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/70636/large/icon.png?1767003505"
+    },
+    {
+      "chainId": "solana",
+      "contractAddress": "9raUVuzeWUk53co63M4WXLWPWE4Xc6Lpn7RS9dnkpump",
+      "symbol": "V2EX",
+      "name": "V2EX",
+      "decimals": 6,
+      "logoUri": "https://assets.coingecko.com/coins/images/68228/large/v2ex.png?1755138110"
+    }
+  ]
+}

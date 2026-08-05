@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 1400 1400"
+   version="1.1"
+   id="svg47"
+   width="1400"
+   height="1400"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg">
+  <defs
+     id="defs28">
+    <linearGradient
+       id="linear-gradient"
+       x1="932.40002"
+       y1="1593.87"
+       x2="1597.8101"
+       y2="999.40002"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0.35"
+         stop-color="#00b2ec"
+         id="stop9" />
+      <stop
+         offset="0.43"
+         stop-color="#2ec0ef"
+         id="stop11" />
+      <stop
+         offset="0.55"
+         stop-color="#6dd3f4"
+         id="stop13" />
+      <stop
+         offset="0.66"
+         stop-color="#a1e3f8"
+         id="stop15" />
+      <stop
+         offset="0.77"
+         stop-color="#caeffb"
+         id="stop17" />
+      <stop
+         offset="0.86"
+         stop-color="#e7f8fd"
+         id="stop19" />
+      <stop
+         offset="0.94"
+         stop-color="#f9fdff"
+         id="stop21" />
+      <stop
+         offset="1"
+         stop-color="#fff"
+         id="stop23" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient-2"
+       x1="951.92999"
+       y1="1615.73"
+       x2="1617.34"
+       y2="1021.26"
+       xlink:href="#linear-gradient" />
+    <linearGradient
+       id="linear-gradient-3"
+       x1="1158.13"
+       y1="1368.02"
+       x2="1158.64"
+       y2="1367.5699"
+       xlink:href="#linear-gradient" />
+    <linearGradient
+       xlink:href="#linear-gradient"
+       id="linearGradient131"
+       gradientUnits="userSpaceOnUse"
+       x1="932.40002"
+       y1="1593.87"
+       x2="1597.8101"
+       y2="999.40002" />
+  </defs>
+  <g
+     id="Layer_1"
+     data-name="Layer 1"
+     transform="translate(-300.82001,-300.82001)">
+    <circle
+       cx="1000.82"
+       cy="1000.82"
+       r="700"
+       id="circle30" />
+    <path
+       d="m 1193,1403.53 q 1.89,1.47 3.89,3 -2,-1.48 -3.89,-3 z"
+       fill="none"
+       id="path32" />
+    <path
+       d="m 1205.5,1412.51 q -4.5,-3 -8.57,-6 4.07,3 8.57,6 z"
+       fill="none"
+       id="path34" />
+    <path
+       d="m 1163.85,1375.14 -5.46,-7.34 5.46,7.34 a 174.17,174.17 0 0 0 18.61,19.51 174.17,174.17 0 0 1 -18.61,-19.51 z"
+       fill="url(#linear-gradient)"
+       id="path36"
+       style="fill:url(#linearGradient131)" />
+    <path
+       d="m 1189.26,1400.5 q 1.83,1.5 3.78,3 v 0 q -1.95,-1.5 -3.78,-3 z"
+       fill="url(#linear-gradient-2)"
+       id="path38"
+       style="fill:url(#linear-gradient-2)" />
+    <path
+       d="m 1001.89,1267.47 c -0.31,0 -0.6,0 -0.91,0 a 267.17,267.17 0 0 1 -199,-89 c -98,-109.66 -88.45,-278.57 21.2,-376.53 a 266.15,266.15 0 0 1 177.52,-67.81 v 0 a 267.12,267.12 0 0 1 199,89 c 65.89,73.75 83.08,174.3 54,262.05 l 119.84,161 c 108.75,-164.9 97.84,-388.41 -40,-542.66 C 1245.41,604.87 1123.32,554.6 1000.69,554.61 A 444.5,444.5 0 0 0 703.59,668.12 C 519.85,832.28 504,1114.31 668.13,1298.06 756.26,1396.71 878.35,1447 1001,1447 a 446.71,446.71 0 0 0 123.32,-17.42 c -4.62,-4.9 -122.43,-162.11 -122.43,-162.11 z"
+       fill="#ffffff"
+       id="path40" />
+    <polygon
+       points="1158.38,1367.8 1158.39,1367.8 "
+       fill="url(#linear-gradient-3)"
+       id="polygon42"
+       style="fill:url(#linear-gradient-3)" />
+    <path
+       d="M 1441,1446.07 1287.65,1240 1205.01,1129 v 0 l -5.46,-7.35 c -1.38,-1.7 -3.11,-3.71 -5,-5.83 a 178.31,178.31 0 0 0 -13.6,-13.67 q -3.18,-2.88 -6.8,-5.86 -1.83,-1.5 -3.78,-3 -1.95,-1.5 -3.9,-3 -4.05,-3 -8.56,-6 c -27.05,-18 -66.28,-34.46 -119,-34.46 H 922.39 l 0.42,0.57 -0.42,0.32 153.36,206.09 82.63,111.06 v 0 l 5.46,7.34 c 1.37,1.7 3.11,3.71 5,5.84 a 180.11,180.11 0 0 0 13.6,13.67 c 2.12,1.91 4.39,3.87 6.8,5.85 q 1.83,1.5 3.78,3 1.95,1.5 3.89,3 4.07,3 8.57,6 c 27,17.94 66.27,34.45 119,34.45 H 1441 l -0.42,-0.57 z"
+       fill="#00b2ec"
+       id="path44" />
+  </g>
+</svg>

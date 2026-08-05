@@ -1,0 +1,3 @@
+"NSCameraUsageDescription" = "Scan payment addresses, WalletConnect URIs, and dApp links.";
+"NSPhotoLibraryAddUsageDescription" = "Save wallet receive QR images to your photo library.";
+"NSPhotoLibraryUsageDescription" = "Access your photo library to save wallet receive QR images.";

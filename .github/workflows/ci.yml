@@ -1,0 +1,192 @@
+name: CI and Android release
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*.*.*"
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+
+env:
+  FLUTTER_VERSION: "3.41.7"
+  JAVA_VERSION: "17"
+  PUB_HOSTED_URL: "https://pub.dev"
+
+jobs:
+  quality:
+    name: Analyze and test
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Set up Java
+        uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
+        with:
+          distribution: temurin
+          java-version: ${{ env.JAVA_VERSION }}
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+
+      - name: Resolve locked dependencies
+        run: flutter pub get --enforce-lockfile
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test --reporter compact
+
+  android-release:
+    name: Build and publish Android APK
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: quality
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    environment: release
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate release tag
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          tag="${GITHUB_REF_NAME}"
+          if [[ ! "${tag}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Release tag must use the vMAJOR.MINOR.PATCH format." >&2
+            exit 1
+          fi
+
+          app_version="$(awk '/^version:/ { print $2; exit }' pubspec.yaml)"
+          release_version="${app_version%%+*}"
+          if [[ "${tag}" != "v${release_version}" ]]; then
+            echo "Tag ${tag} does not match pubspec version ${release_version}." >&2
+            exit 1
+          fi
+
+      - name: Set up Java
+        uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
+        with:
+          distribution: temurin
+          java-version: ${{ env.JAVA_VERSION }}
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+
+      - name: Resolve locked dependencies
+        run: flutter pub get --enforce-lockfile
+
+      - name: Configure Android signing
+        shell: bash
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          ANDROID_STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
+        run: |
+          set -euo pipefail
+
+          required_secrets=(
+            ANDROID_KEYSTORE_BASE64
+            ANDROID_KEY_ALIAS
+            ANDROID_KEY_PASSWORD
+            ANDROID_STORE_PASSWORD
+          )
+          for secret_name in "${required_secrets[@]}"; do
+            if [[ -z "${!secret_name:-}" ]]; then
+              echo "Missing required release secret: ${secret_name}" >&2
+              exit 1
+            fi
+          done
+
+          escape_property() {
+            printf '%s' "$1" | sed -e 's/\\/\\\\/g' -e 's/:/\\:/g' -e 's/=/\\=/g'
+          }
+
+          printf '%s' "${ANDROID_KEYSTORE_BASE64}" \
+            | base64 --decode > android/app/upload-keystore.jks
+          chmod 600 android/app/upload-keystore.jks
+
+          {
+            printf 'storePassword=%s\n' "$(escape_property "${ANDROID_STORE_PASSWORD}")"
+            printf 'keyPassword=%s\n' "$(escape_property "${ANDROID_KEY_PASSWORD}")"
+            printf 'keyAlias=%s\n' "$(escape_property "${ANDROID_KEY_ALIAS}")"
+            printf 'storeFile=upload-keystore.jks\n'
+          } > android/key.properties
+          chmod 600 android/key.properties
+
+          keytool -list \
+            -keystore android/app/upload-keystore.jks \
+            -storepass "${ANDROID_STORE_PASSWORD}" \
+            -alias "${ANDROID_KEY_ALIAS}" > /dev/null
+
+      - name: Build release APK
+        shell: bash
+        env:
+          REOWN_PROJECT_ID: ${{ vars.REOWN_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          flutter build apk --release \
+            --dart-define="REOWN_PROJECT_ID=${REOWN_PROJECT_ID:-}"
+
+      - name: Prepare release assets
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          release_version="${GITHUB_REF_NAME#v}"
+          mkdir -p dist
+          cp build/app/outputs/flutter-apk/app-release.apk \
+            "dist/safe-wallet-${release_version}-android.apk"
+          (
+            cd dist
+            sha256sum ./*.apk > SHA256SUMS
+          )
+
+      - name: Publish GitHub release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          if gh release view "${GITHUB_REF_NAME}" > /dev/null 2>&1; then
+            gh release upload "${GITHUB_REF_NAME}" dist/* --clobber
+          else
+            gh release create "${GITHUB_REF_NAME}" dist/* \
+              --verify-tag \
+              --title "Safe Wallet ${GITHUB_REF_NAME#v}" \
+              --generate-notes
+          fi
+
+      - name: Remove signing materials
+        if: always()
+        run: rm -f android/key.properties android/app/upload-keystore.jks
