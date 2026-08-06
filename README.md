@@ -125,8 +125,6 @@ flutter run --dart-define=REOWN_PROJECT_ID=your_project_id
 
 The app can start without this value, and a project ID may be entered later in Settings. WalletConnect sessions currently support EVM and Solana namespaces; Bitcoin, TRON, and Sui proposals are rejected.
 
-See [WalletConnect integration](docs/walletconnect.md) for implementation and licensing details.
-
 ## Verification
 
 Before submitting a change, run the checks relevant to it:
@@ -150,7 +148,6 @@ lib/
 └── shared/             # Shared security, networking, storage, and UI code
 test/                   # Unit and widget tests
 integration_test/       # End-to-end and integration coverage
-docs/                   # Engineering, requirements, and license documentation
 ```
 
 Read [ARCHITECTURE.md](ARCHITECTURE.md) and [DESIGN.md](DESIGN.md) for more context.
@@ -174,15 +171,12 @@ Do **not** disclose suspected vulnerabilities in a public issue. Use GitHub's pr
 
 - [Architecture](ARCHITECTURE.md)
 - [Design notes](DESIGN.md)
-- [WalletConnect integration](docs/walletconnect.md)
-- [Feature and test inventory](docs/project-feature-test-cases.md)
-- [Solana rent recovery](docs/solana-rent-recovery.md)
 
 ## License and third-party notices
 
 Safe Wallet's original source code is released under the [MIT License](LICENSE).
 
-Safe Wallet includes Reown WalletKit components distributed under the WalletConnect Community License. Portions © 2025 Reown, Inc. All Rights Reserved. Review [NOTICE](NOTICE), the [WalletConnect Community License](docs/licenses/reown-walletkit-community-license.txt), and its commercial-use thresholds before distributing the application. That license applies independently to the Reown components and is not replaced by the project's MIT License.
+Safe Wallet includes Reown WalletKit components distributed under the WalletConnect Community License. Portions © 2025 Reown, Inc. All Rights Reserved. Review [NOTICE](NOTICE), the [WalletConnect Community License](https://pub.dev/packages/reown_walletkit/license), and its commercial-use thresholds before distributing the application. That license applies independently to the Reown components and is not replaced by the project's MIT License.
 
 ## Disclaimer
 

@@ -125,8 +125,6 @@ flutter run --dart-define=REOWN_PROJECT_ID=your_project_id
 
 未传入该值时应用仍可启动，也可以稍后在设置中填写 Project ID。WalletConnect 会话目前仅支持 EVM 和 Solana namespace；Bitcoin、TRON 和 Sui proposal 会被拒绝。
 
-实现和许可详情见 [WalletConnect 集成文档](docs/walletconnect.md)。
-
 ## 验证
 
 提交改动前，请运行与改动相关的检查：
@@ -150,7 +148,6 @@ lib/
 └── shared/             # 通用安全、网络、存储和 UI 代码
 test/                   # 单元测试和 Widget 测试
 integration_test/       # 端到端和集成测试
-docs/                   # 工程、需求和许可证文档
 ```
 
 更多背景见 [ARCHITECTURE.md](ARCHITECTURE.md) 和 [DESIGN.md](DESIGN.md)。
@@ -174,15 +171,12 @@ docs/                   # 工程、需求和许可证文档
 
 - [架构说明](ARCHITECTURE.md)
 - [设计说明](DESIGN.md)
-- [WalletConnect 集成](docs/walletconnect.md)
-- [功能与测试清单](docs/project-feature-test-cases.md)
-- [Solana 租金回收](docs/solana-rent-recovery.md)
 
 ## 许可证与第三方声明
 
 Safe Wallet 的自有源代码采用 [MIT 许可证](LICENSE)开源发布。
 
-Safe Wallet 包含按 WalletConnect Community License 分发的 Reown WalletKit 组件。部分内容 © 2025 Reown, Inc. All Rights Reserved. 分发应用前，请阅读 [NOTICE](NOTICE)、[WalletConnect Community License](docs/licenses/reown-walletkit-community-license.txt) 及其中的商业使用门槛。该许可证独立适用于 Reown 组件，不会被项目的 MIT 许可证替代。
+Safe Wallet 包含按 WalletConnect Community License 分发的 Reown WalletKit 组件。部分内容 © 2025 Reown, Inc. All Rights Reserved. 分发应用前，请阅读 [NOTICE](NOTICE)、[WalletConnect Community License](https://pub.dev/packages/reown_walletkit/license) 及其中的商业使用门槛。该许可证独立适用于 Reown 组件，不会被项目的 MIT 许可证替代。
 
 ## 免责声明
 
