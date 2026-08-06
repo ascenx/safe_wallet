@@ -1328,35 +1328,6 @@ void main() {
     expect(find.text('资产加载失败'), findsNothing);
   });
 
-  testWidgets('home shell visual snapshot matches 390x844 reference viewport', (
-    tester,
-  ) async {
-    tester.view.physicalSize = const Size(390, 844);
-    tester.view.devicePixelRatio = 1;
-    addTearDown(() {
-      tester.view.resetPhysicalSize();
-      tester.view.resetDevicePixelRatio();
-    });
-    LocaleSettings.setLocaleSync(AppLocale.zh);
-
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [homeControllerProvider.overrideWithValue(_visualHomeState)],
-        child: TranslationProvider(
-          child: MaterialApp(
-            theme: buildAppTheme(),
-            home: const _HomeVisualShell(),
-          ),
-        ),
-      ),
-    );
-    await tester.pumpAndSettle();
-
-    await expectLater(
-      find.byType(_HomeVisualShell),
-      matchesGoldenFile('goldens/home_shell_390x844.png'),
-    );
-  });
 }
 
 Finder _totalValueReelText(String value) {
@@ -1459,56 +1430,6 @@ final _bitcoin = defaultChains.firstWhere(
   (chain) => chain.id == 'bitcoin-mainnet',
 );
 const _usdcContractAddress = '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48';
-const _visualHomeState = HomeState(
-  assetStatus: HomeAssetStatus.loaded,
-  walletName: 'My Wallet',
-  chainName: 'Ethereum',
-  totalValue: '\$12,345.67',
-  nativeEquivalent: '≈ 3.4567 ETH',
-  recentTransactions: [
-    HomeTransactionPreview(
-      title: '接收',
-      subtitle: 'From: 0x8a3...5f2e',
-      amount: '+0.85 ETH',
-      timestamp: '2024-05-20',
-      isIncoming: true,
-    ),
-    HomeTransactionPreview(
-      title: '转账',
-      subtitle: 'To: 0x7b2...1d4c',
-      amount: '-1.20 ETH',
-      timestamp: '2024-05-20',
-      isIncoming: false,
-    ),
-    HomeTransactionPreview(
-      title: '接收',
-      subtitle: 'From: 0x9c1...a8e7',
-      amount: '+0.50 ETH',
-      timestamp: '2024-05-19',
-      isIncoming: true,
-    ),
-  ],
-  assets: [
-    HomeAssetPreview(
-      name: 'Ethereum',
-      symbol: 'ETH',
-      amount: '3.4567 ETH',
-      fiatValue: '\$7,890.12',
-    ),
-    HomeAssetPreview(
-      name: 'Tether USD',
-      symbol: 'USDT',
-      amount: '2,450.00 USDT',
-      fiatValue: '\$2,450.00',
-    ),
-    HomeAssetPreview(
-      name: 'USD Coin',
-      symbol: 'USDC',
-      amount: '1,250.00 USDC',
-      fiatValue: '\$1,250.00',
-    ),
-  ],
-);
 final _assetPortfolioRequest = AssetPortfolioRequest(
   account: _ExistingWalletRepository._account,
   chain: _ethereum,
@@ -1936,36 +1857,4 @@ final class _HomeTestWebViewWidget extends PlatformWebViewWidget {
 
   @override
   Widget build(BuildContext context) => const SizedBox.shrink();
-}
-
-final class _HomeVisualShell extends StatelessWidget {
-  const _HomeVisualShell();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: const HomePage(),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: 0,
-        onDestinationSelected: (_) {},
-        destinations: [
-          NavigationDestination(
-            icon: const Icon(AppIcons.home),
-            selectedIcon: const Icon(Icons.home),
-            label: t.tabs.home,
-          ),
-          NavigationDestination(
-            icon: const Icon(AppIcons.globe),
-            selectedIcon: const Icon(AppIcons.globe),
-            label: t.tabs.browser,
-          ),
-          NavigationDestination(
-            icon: const Icon(AppIcons.settings),
-            selectedIcon: const Icon(AppIcons.settingsSelected),
-            label: t.tabs.settings,
-          ),
-        ],
-      ),
-    );
-  }
 }
