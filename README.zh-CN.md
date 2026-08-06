@@ -13,7 +13,7 @@
 </p>
 
 > [!IMPORTANT]
-> 为降低软件供应链风险，建议尽可能先审查源代码，再自行编译 Safe Wallet。请只安装由自己构建，或来自可信源码和可信构建流程的 APK。
+> 为降低软件供应链风险，建议尽可能先审查源代码，再自行编译 Safe Wallet。也可以使用本仓库 GitHub Actions 根据正式 Tag 自动构建并发布到 [GitHub Releases](../../releases) 的 APK，同时使用随附的 `SHA256SUMS` 文件校验完整性。
 
 ## 项目简介
 
@@ -108,6 +108,8 @@ flutter build apk --release \
 ```
 
 构建产物位于 `build/app/outputs/flutter-apk/`。如果 APK 用于分发，请参考 Flutter 的 [Android 签名文档](https://docs.flutter.dev/deployment/android#sign-the-app)，在 `android/key.properties` 中配置自己的 Release Keystore。请勿提交 Keystore、签名密码或 `key.properties`。
+
+除本地自行构建外，正式 Tag 对应的 APK 也会由 GitHub Actions 自动构建，并与用于完整性校验的 `SHA256SUMS` 文件一起发布到 [GitHub Releases](../../releases)。
 
 修改本地化源文件后，使用以下命令重新生成翻译：
 

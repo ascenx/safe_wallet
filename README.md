@@ -13,7 +13,7 @@
 </p>
 
 > [!IMPORTANT]
-> For better supply-chain security, review the source code and build Safe Wallet yourself whenever possible. Only install APKs produced by you or by a source and build process you trust.
+> For better supply-chain security, review the source code and build Safe Wallet yourself whenever possible. Alternatively, use APKs automatically built from tagged releases by this repository's GitHub Actions and published on [GitHub Releases](../../releases), and verify them against the provided `SHA256SUMS` file.
 
 ## Overview
 
@@ -108,6 +108,8 @@ flutter build apk --release \
 ```
 
 Build outputs are written to `build/app/outputs/flutter-apk/`. For an APK intended for distribution, configure your own release keystore in `android/key.properties` by following Flutter's [Android signing guide](https://docs.flutter.dev/deployment/android#sign-the-app). Never commit the keystore, signing passwords, or `key.properties`.
+
+As an alternative to building locally, APKs for tagged releases are automatically built by GitHub Actions and published on [GitHub Releases](../../releases) together with a `SHA256SUMS` file for integrity verification.
 
 When localization source files change, regenerate translations with:
 
