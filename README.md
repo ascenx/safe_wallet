@@ -1,3 +1,5 @@
+
+
 <p align="center">
   <img src="assets/common/logo.svg" width="96" alt="Safe Wallet logo">
 </p>
@@ -107,7 +109,7 @@ flutter build apk --release \
   --dart-define=REOWN_PROJECT_ID=your_project_id
 ```
 
-Build outputs are written to `build/app/outputs/flutter-apk/`. For an APK intended for distribution, configure your own release keystore in `android/key.properties` by following Flutter's [Android signing guide](https://docs.flutter.dev/deployment/android#sign-the-app). Never commit the keystore, signing passwords, or `key.properties`.
+Build outputs are written to `build/app/outputs/flutter-apk/app-release.apk`. For an APK intended for distribution, configure your own release keystore in `android/key.properties` by following Flutter's [Android signing guide](https://docs.flutter.dev/deployment/android#sign-the-app). Never commit the keystore, signing passwords, or `key.properties`.
 
 As an alternative to building locally, APKs for tagged releases are automatically built by GitHub Actions and published on [GitHub Releases](../../releases) together with a `SHA256SUMS` file for integrity verification.
 
