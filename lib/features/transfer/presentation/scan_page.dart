@@ -11,6 +11,8 @@ import '../../../shared/design/app_spacing.dart';
 import '../../../shared/design/app_text_styles.dart';
 import '../../../shared/utils/address_parser.dart';
 import '../../../shared/utils/bitcoin_address.dart';
+import '../../../shared/utils/sui_address.dart';
+import '../../address_book/application/address_book_controller.dart';
 import '../../assets/application/asset_portfolio_provider.dart';
 import '../../chains/application/available_chains_provider.dart';
 import '../../chains/application/selected_chain_controller.dart';
@@ -19,10 +21,17 @@ import '../application/transfer_draft_controller.dart';
 import 'transfer_page.dart';
 
 final class ScanPage extends ConsumerStatefulWidget {
-  const ScanPage({this.initialScanValue, this.autoNavigate = true, super.key});
+  const ScanPage({
+    this.initialScanValue,
+    this.autoNavigate = true,
+    this.recipientChain,
+    super.key,
+  });
 
   final String? initialScanValue;
   final bool autoNavigate;
+  // When opened from a transfer form, return only its recipient address.
+  final ChainConfig? recipientChain;
 
   @override
   ConsumerState<ScanPage> createState() => _ScanPageState();
@@ -129,6 +138,11 @@ final class _ScanPageState extends ConsumerState<ScanPage> {
       return;
     }
     final parsed = parseWalletAddress(rawValue);
+    final recipientChain = widget.recipientChain;
+    if (recipientChain != null) {
+      _returnRecipient(rawValue, parsed, recipientChain);
+      return;
+    }
     if (parsed == null) {
       setState(() {
         _error = t.transfer.scanInvalid;
@@ -164,6 +178,36 @@ final class _ScanPageState extends ConsumerState<ScanPage> {
         ),
       ),
     );
+  }
+
+  void _returnRecipient(
+    String rawValue,
+    ParsedWalletAddress? parsed,
+    ChainConfig chain,
+  ) {
+    final rawAddress = rawValue.trim();
+    final address = parsed?.address ?? rawAddress;
+    final hasScheme = Uri.tryParse(rawAddress)?.hasScheme ?? false;
+    final matchesNetwork =
+        (!hasScheme ||
+            (parsed != null && _chainMatchesParsedAddress(chain, parsed))) &&
+        (chain.chainType != ChainType.bitcoin ||
+            isBitcoinAddressForNetwork(address, isTestnet: chain.isTestnet));
+    if (!isValidAddressForChainType(address, chain.chainType) ||
+        !matchesNetwork) {
+      setState(() {
+        _error = parsed == null
+            ? t.transfer.scanInvalid
+            : t.transfer.invalidAddress;
+      });
+      return;
+    }
+
+    _handledScan = true;
+    final recipient = chain.chainType == ChainType.sui
+        ? normalizeSuiAddressInput(address)!
+        : address;
+    Navigator.of(context).pop(recipient);
   }
 
   Future<void> _selectScannedChain(ParsedWalletAddress parsed) async {

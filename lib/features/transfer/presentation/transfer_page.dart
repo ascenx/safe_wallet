@@ -27,6 +27,7 @@ import '../application/transfer_draft_controller.dart';
 import '../domain/transaction_record.dart';
 import '../domain/transaction_request.dart';
 import 'transaction_confirm_page.dart';
+import 'scan_page.dart';
 import 'transfer_asset_picker_sheet.dart';
 
 final class TransferPage extends ConsumerStatefulWidget {
@@ -174,33 +175,53 @@ final class _TransferPageState extends ConsumerState<TransferPage> {
                   onChanged: (_) => _clearMaxMode(),
                   decoration: InputDecoration(
                     labelText: t.transfer.recipientLabel,
-                    suffixIcon: IconButton(
-                      onPressed: _isEstimating
-                          ? null
-                          : () async {
-                              final requestContext = await requestFuture;
-                              if (!context.mounted || requestContext == null) {
-                                return;
-                              }
-                              final recipient = await showContactPickerSheet(
-                                context,
-                                chainType: requestContext.chain.chainType,
-                                currentWalletId: requestContext.account.id,
-                              );
-                              if (!mounted) {
-                                return;
-                              }
-                              if (recipient != null) {
-                                setState(() {
-                                  _recipientController.text = recipient.address;
-                                  _formError = null;
-                                  _isMaxMode = false;
-                                  _maxFeeEstimate = null;
-                                });
-                              }
-                            },
-                      icon: const Icon(AppIcons.contacts),
-                      tooltip: t.transfer.selectContact,
+                    suffixIcon: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          onPressed: _isEstimating
+                              ? null
+                              : () => _scanRecipient(requestFuture),
+                          icon: const Icon(
+                            AppIcons.scan,
+                            size: AppIconSize.action,
+                          ),
+                          tooltip: t.transfer.scanTitle,
+                        ),
+                        IconButton(
+                          onPressed: _isEstimating
+                              ? null
+                              : () async {
+                                  final requestContext = await requestFuture;
+                                  if (!context.mounted ||
+                                      requestContext == null) {
+                                    return;
+                                  }
+                                  final recipient =
+                                      await showContactPickerSheet(
+                                        context,
+                                        chainType:
+                                            requestContext.chain.chainType,
+                                        currentWalletId:
+                                            requestContext.account.id,
+                                      );
+                                  if (!mounted) {
+                                    return;
+                                  }
+                                  if (recipient != null) {
+                                    setState(() {
+                                      _recipientController.text =
+                                          recipient.address;
+                                      _formError = null;
+                                      _isMaxMode = false;
+                                      _maxFeeEstimate = null;
+                                    });
+                                  }
+                                },
+                          icon: const Icon(AppIcons.contacts),
+                          tooltip: t.transfer.selectContact,
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -287,6 +308,30 @@ final class _TransferPageState extends ConsumerState<TransferPage> {
         ),
       ),
     );
+  }
+
+  Future<void> _scanRecipient(
+    Future<AssetPortfolioRequest?> requestFuture,
+  ) async {
+    final request = await requestFuture;
+    if (!mounted || request == null) {
+      return;
+    }
+    FocusScope.of(context).unfocus();
+    final recipient = await Navigator.of(context).push<String>(
+      MaterialPageRoute<String>(
+        builder: (_) => ScanPage(recipientChain: request.chain),
+      ),
+    );
+    if (!mounted || recipient == null) {
+      return;
+    }
+    setState(() {
+      _recipientController.text = recipient;
+      _formError = null;
+      _isMaxMode = false;
+      _maxFeeEstimate = null;
+    });
   }
 
   AssetBalance _selectedAsset(List<AssetBalance> balances) {

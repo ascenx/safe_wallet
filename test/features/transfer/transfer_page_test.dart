@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:safe_wallet/shared/design/app_icons.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
+// ignore: depend_on_referenced_packages
+import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'package:safe_wallet/features/address_book/application/address_book_controller.dart';
 import 'package:safe_wallet/features/address_book/data/address_book_repository.dart';
 import 'package:safe_wallet/features/address_book/domain/address_book_contact.dart';
@@ -18,6 +21,7 @@ import 'package:safe_wallet/features/transfer/data/bitcoin_fee_service.dart';
 import 'package:safe_wallet/features/transfer/data/evm_fee_service.dart';
 import 'package:safe_wallet/features/transfer/domain/transaction_request.dart';
 import 'package:safe_wallet/features/transfer/presentation/transfer_page.dart';
+import 'package:safe_wallet/features/transfer/presentation/scan_page.dart';
 import 'package:safe_wallet/features/wallet/application/wallet_repository_provider.dart';
 import 'package:safe_wallet/features/wallet/data/wallet_repository.dart';
 import 'package:safe_wallet/features/wallet/domain/wallet_account.dart';
@@ -26,6 +30,157 @@ import 'package:safe_wallet/shared/design/app_colors.dart';
 import 'package:safe_wallet/shared/design/app_theme.dart';
 
 void main() {
+  testWidgets('recipient scan returns to the form and clears stale errors', (
+    tester,
+  ) async {
+    await _pumpRecipientScanForm(tester);
+    final originalState = tester.state(find.byType(TransferPage));
+    await tester.enterText(
+      find.widgetWithText(TextField, '收款地址'),
+      'not-an-address',
+    );
+    await tester.enterText(find.widgetWithText(TextField, '金额'), '0.1');
+    await tester.enterText(
+      find.widgetWithText(TextField, '备注 / Tag'),
+      'My memo',
+    );
+    await tester.tap(find.text('下一步'));
+    await tester.pumpAndSettle();
+    expect(find.text('收款地址格式无效'), findsOneWidget);
+
+    await tester.tap(find.byTooltip('扫码'));
+    await tester.pumpAndSettle();
+    expect(find.byType(ScanPage), findsOneWidget);
+    _captureRecipientScan(
+      tester,
+      'ethereum:$_friendAddress@1?amount=99&memo=QR%20memo',
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.byType(ScanPage), findsNothing);
+    expect(tester.state(find.byType(TransferPage)), same(originalState));
+    expect(find.text(_friendAddress), findsOneWidget);
+    expect(find.text('收款地址格式无效'), findsNothing);
+    expect(
+      tester
+          .widget<TextField>(find.widgetWithText(TextField, '金额'))
+          .controller!
+          .text,
+      '0.1',
+    );
+    expect(
+      tester
+          .widget<TextField>(find.widgetWithText(TextField, '备注 / Tag'))
+          .controller!
+          .text,
+      'My memo',
+    );
+  });
+
+  testWidgets('recipient scan cancellation preserves existing form values', (
+    tester,
+  ) async {
+    await _pumpRecipientScanForm(tester);
+    await tester.enterText(
+      find.widgetWithText(TextField, '收款地址'),
+      _friendAddress,
+    );
+    await tester.enterText(find.widgetWithText(TextField, '金额'), '0.25');
+    await tester.tap(find.byTooltip('扫码'));
+    await tester.pumpAndSettle();
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+
+    expect(find.text(_friendAddress), findsOneWidget);
+    expect(
+      tester
+          .widget<TextField>(find.widgetWithText(TextField, '金额'))
+          .controller!
+          .text,
+      '0.25',
+    );
+  });
+
+  testWidgets('recipient scan rejects invalid and mismatched QR then retries', (
+    tester,
+  ) async {
+    await _pumpRecipientScanForm(tester);
+    await tester.tap(find.byTooltip('扫码'));
+    await tester.pumpAndSettle();
+
+    _captureRecipientScan(tester, 'not-an-address');
+    await tester.pumpAndSettle();
+    expect(find.text('二维码内容不是有效地址'), findsOneWidget);
+
+    for (final raw in [
+      'bitcoin:$_bitcoinFriendAddress',
+      'ethereum:$_friendAddress@56',
+    ]) {
+      _captureRecipientScan(tester, raw);
+      await tester.pumpAndSettle();
+      expect(find.byType(ScanPage), findsOneWidget);
+      expect(find.text('收款地址格式无效'), findsOneWidget);
+    }
+
+    _captureRecipientScan(tester, _friendAddress);
+    await tester.pumpAndSettle();
+    expect(find.byType(ScanPage), findsNothing);
+    expect(find.text(_friendAddress), findsOneWidget);
+  });
+
+  for (final (chainId, address, expectedAddress) in [
+    ('ethereum', _friendAddress, _friendAddress),
+    (
+      'solana-mainnet',
+      '11111111111111111111111111111111',
+      '11111111111111111111111111111111',
+    ),
+    ('bitcoin-mainnet', _bitcoinFriendAddress, _bitcoinFriendAddress),
+    (
+      'tron-mainnet',
+      'TJRabPrwbZy45sbavfcjinPJC18kjpRTv8',
+      'TJRabPrwbZy45sbavfcjinPJC18kjpRTv8',
+    ),
+    (
+      'sui-mainnet',
+      '0x2',
+      '0x0000000000000000000000000000000000000000000000000000000000000002',
+    ),
+  ]) {
+    testWidgets('recipient scan accepts a raw $chainId address', (
+      tester,
+    ) async {
+      final chain = defaultChains.firstWhere((chain) => chain.id == chainId);
+      await _pumpRecipientScanForm(tester, chain: chain);
+      await tester.tap(find.byTooltip('扫码'));
+      await tester.pumpAndSettle();
+      _captureRecipientScan(tester, address);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(ScanPage), findsNothing);
+      expect(find.text(expectedAddress), findsOneWidget);
+    });
+  }
+
+  testWidgets('recipient scan rejects a Bitcoin address on the wrong network', (
+    tester,
+  ) async {
+    final bitcoin = defaultChains.firstWhere(
+      (chain) => chain.id == 'bitcoin-mainnet',
+    );
+    await _pumpRecipientScanForm(tester, chain: bitcoin);
+    await tester.tap(find.byTooltip('扫码'));
+    await tester.pumpAndSettle();
+    _captureRecipientScan(tester, 'tb1qxmt9xgewg6mxc4mvnzvrzu4f2v0gy782fydg0w');
+    await tester.pumpAndSettle();
+
+    expect(find.byType(ScanPage), findsOneWidget);
+    expect(find.text('收款地址格式无效'), findsOneWidget);
+    _captureRecipientScan(tester, _bitcoinFriendAddress);
+    await tester.pumpAndSettle();
+    expect(find.text(_bitcoinFriendAddress), findsOneWidget);
+  });
+
   testWidgets('native Max reserves the maximum EVM network fee', (
     tester,
   ) async {
@@ -586,6 +741,68 @@ void main() {
 
     expect(find.text(_bitcoinFriendAddress), findsOneWidget);
   });
+}
+
+Future<void> _pumpRecipientScanForm(
+  WidgetTester tester, {
+  ChainConfig? chain,
+}) async {
+  final originalPlatform = MobileScannerPlatform.instance;
+  MobileScannerPlatform.instance = _RecipientScannerPlatform();
+  addTearDown(() => MobileScannerPlatform.instance = originalPlatform);
+  final request = chain == null
+      ? _assetPortfolioRequest
+      : _assetPortfolioRequestFor(chain);
+  await tester.pumpWidget(
+    ProviderScope(
+      overrides: [
+        assetPortfolioProvider.overrideWith(
+          (ref) async => _portfolio(chain: request.chain),
+        ),
+        assetPortfolioRequestProvider.overrideWithValue(Future.value(request)),
+      ],
+      child: TranslationProvider(
+        child: MaterialApp(theme: buildAppTheme(), home: const TransferPage()),
+      ),
+    ),
+  );
+  await tester.pumpAndSettle();
+}
+
+void _captureRecipientScan(WidgetTester tester, String rawValue) {
+  tester.widget<MobileScanner>(find.byType(MobileScanner)).onDetect!(
+    BarcodeCapture(barcodes: [Barcode(rawValue: rawValue)]),
+  );
+}
+
+final class _RecipientScannerPlatform extends MobileScannerPlatform
+    with MockPlatformInterfaceMixin {
+  @override
+  Stream<BarcodeCapture?> get barcodesStream => const Stream.empty();
+
+  @override
+  Stream<TorchState> get torchStateStream => const Stream.empty();
+
+  @override
+  Stream<double> get zoomScaleStateStream => const Stream.empty();
+
+  @override
+  Widget buildCameraView() => const SizedBox.shrink();
+
+  @override
+  Future<MobileScannerViewAttributes> start(StartOptions startOptions) async {
+    return const MobileScannerViewAttributes(
+      cameraDirection: CameraFacing.back,
+      currentTorchMode: TorchState.off,
+      size: Size(640, 480),
+    );
+  }
+
+  @override
+  Future<void> stop() async {}
+
+  @override
+  Future<void> dispose() async {}
 }
 
 AssetPortfolio _portfolio({ChainConfig? chain}) {
