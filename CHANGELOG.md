@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.0.1] - 2026-10-14
+
+### Added
+
+- Scan recipient QR codes directly from the transfer form while preserving
+  the selected asset, amount, and memo. Invalid or mismatched-network
+  addresses are rejected.
+
+### Fixed
+
+- Include compute-budget instructions in Solana transfer fee simulations so
+  the estimated compute-unit limit covers the complete transaction.
+
 ## [1.0.0] - 2026-08-06
 
 ### Added

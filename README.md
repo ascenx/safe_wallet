@@ -19,6 +19,8 @@
 
 ## Overview
 
+Current version: **1.0.1** (build **5**). See the [changelog](CHANGELOG.md) for release notes.
+
 Safe Wallet is a Flutter wallet for managing locally controlled accounts and assets across EVM networks, Bitcoin, TRON, Solana, and Sui. It includes wallet creation and import, portfolio views, transfers, an address book, transaction history, QR scanning, a dApp browser, and WalletConnect integration.
 
 Private keys and recovery phrases are encrypted on the device. Safe Wallet does not provide a custodial backend and cannot recover lost credentials or reverse transactions.
@@ -39,7 +41,7 @@ Private keys and recovery phrases are encrypted on the device. Safe Wallet does 
 - Call EVM contracts and wrap or unwrap native tokens
 - Recover rent from eligible Solana token accounts
 - Stake TRX on TRON
-- Use an address book, QR scanner, and local transaction history
+- Use an address book, scan recipient QR codes from the transfer form, and view local transaction history
 - Switch between English and Simplified Chinese
 
 ## Supported networks

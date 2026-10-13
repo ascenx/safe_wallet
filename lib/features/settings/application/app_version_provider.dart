@@ -2,8 +2,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 const fallbackAppVersionInfo = AppVersionInfo(
-  version: String.fromEnvironment('APP_VERSION', defaultValue: '1.0.0'),
-  buildNumber: String.fromEnvironment('APP_BUILD_NUMBER', defaultValue: '1'),
+  version: String.fromEnvironment('APP_VERSION', defaultValue: '1.0.1'),
+  buildNumber: String.fromEnvironment('APP_BUILD_NUMBER', defaultValue: '5'),
 );
 
 final appVersionReaderProvider = Provider<AppVersionReader>((ref) {
@@ -21,10 +21,7 @@ final appVersionProvider = FutureProvider<AppVersionInfo>((ref) async {
 });
 
 final class AppVersionInfo {
-  const AppVersionInfo({
-    required this.version,
-    required this.buildNumber,
-  });
+  const AppVersionInfo({required this.version, required this.buildNumber});
 
   final String version;
   final String buildNumber;

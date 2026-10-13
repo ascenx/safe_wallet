@@ -97,7 +97,7 @@ class MainActivity : FlutterFragmentActivity() {
                     }
                     result.success(
                         mapOf(
-                            "version" to (packageInfo.versionName ?: "1.0.0"),
+                            "version" to (packageInfo.versionName ?: "1.0.1"),
                             "buildNumber" to buildNumber.toString()
                         )
                     )

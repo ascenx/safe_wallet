@@ -227,8 +227,8 @@ import webview_flutter_wkwebview
       }
       let info = Bundle.main.infoDictionary
       result([
-        "version": info?["CFBundleShortVersionString"] as? String ?? "1.0.0",
-        "buildNumber": info?["CFBundleVersion"] as? String ?? "1",
+        "version": info?["CFBundleShortVersionString"] as? String ?? "1.0.1",
+        "buildNumber": info?["CFBundleVersion"] as? String ?? "5",
       ])
     }
   }
