@@ -49,15 +49,24 @@ final class SdkSolanaFeeService implements SolanaFeeService {
       final blockhash = await connection.getLatestBlockhash();
       final transaction =
           Transaction(
-            feePayer: PublicKey.fromBase58(fromAddress),
-            recentBlockhash: blockhash.blockhash,
-          )..add(
-            SystemProgram.transfer(
-              fromPubkey: PublicKey.fromBase58(fromAddress),
-              toPubkey: PublicKey.fromBase58(toAddress),
-              lamports: lamports,
-            ),
-          );
+              feePayer: PublicKey.fromBase58(fromAddress),
+              recentBlockhash: blockhash.blockhash,
+            )
+            // Simulate the same instruction set that will be broadcast.
+            // Each compute-budget instruction also consumes compute units.
+            ..add(ComputeBudgetProgram.setComputeUnitLimit(units: 1400000))
+            ..add(
+              ComputeBudgetProgram.setComputeUnitPrice(
+                microLamports: BigInt.zero,
+              ),
+            )
+            ..add(
+              SystemProgram.transfer(
+                fromPubkey: PublicKey.fromBase58(fromAddress),
+                toPubkey: PublicKey.fromBase58(toAddress),
+                lamports: lamports,
+              ),
+            );
       final fee = await transaction.getEstimatedFee(connection);
       if (fee == null) {
         throw StateError('Solana fee estimate returned null');
