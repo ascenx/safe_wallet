@@ -10,6 +10,7 @@ import 'package:safe_wallet/features/dapp/data/dapp_permission_repository.dart';
 import 'package:safe_wallet/features/dapp/domain/dapp_permission.dart';
 import 'package:safe_wallet/features/i18n/application/locale_controller.dart';
 import 'package:safe_wallet/features/i18n/application/locale_preference_store.dart';
+import 'package:safe_wallet/features/settings/application/app_version_provider.dart';
 import 'package:safe_wallet/features/settings/application/background_privacy_shield_setting.dart';
 import 'package:safe_wallet/features/settings/application/launch_lock_setting.dart';
 import 'package:safe_wallet/features/settings/application/theme_color_setting.dart';
@@ -68,7 +69,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('Safe Wallet'), findsWidgets);
-      expect(find.text('版本 1.0.0（Build 1）'), findsOneWidget);
+      expect(find.text('版本 9.8.7（Build 42）'), findsOneWidget);
     });
 
     testWidgets('advanced settings opens the EVM contract call tool', (
@@ -1079,6 +1080,10 @@ Widget _settingsAppWithProfile({Widget home = const SettingsPage()}) {
         _FakeWalletRepository([account]),
       ),
       chainRepositoryProvider.overrideWithValue(_FakeChainRepository()),
+      appVersionProvider.overrideWith(
+        (ref) async =>
+            const AppVersionInfo(version: '9.8.7', buildNumber: '42'),
+      ),
     ],
     child: _settingsMaterialApp(home: home),
   );
